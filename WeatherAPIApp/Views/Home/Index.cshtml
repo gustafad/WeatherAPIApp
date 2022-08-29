@@ -1,30 +1,53 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
+    WeatherAPIApp.ViewModels.CurrentWeatherVM cwVM = ViewBag.CurrentWeather;
+    WeatherAPIApp.ViewModels.FiveDaysWeatherForecastVM fwVM = ViewBag.FiveDaysWeatherForecast;
 }
 
 <div class="jumbotron">
-	<h1 class="text-center">
-		Weather Forecast
-		<img src="..\..\Content\WeatherIcon.png" class="img-fluid" style="max-height:100px" alt="WeatherIcon - sun with cloud in front of it" />
-	</h1>
+    <h1 class="text-center">
+        Weather Forecast
+        <img src="..\..\Content\WeatherIcon.png" class="img-fluid" style="max-height:100px" alt="WeatherIcon - sun with cloud in front of it" />
+    </h1>
     <p class="lead">A weather forecast application for the CTK interview case.</p>
-	<!--<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
+    <!--<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
 
 </div>
 
-<div class="row">
-    <div class="col-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
+<div>
+    <p class="text-center" style="font-size: small">I will use Chalmers location or my own to get weather data. However, finding the location of the user is also possible, though it is not prioritized in this case.</p>
 </div>
+
+<div class="row center-block">
+    <div class="col-md-6">
+        <h2>Current weather</h2>
+        <p>This section calls to the OpenWeatherAPI for the current weather data given latitude and longitude.</p>
+
+        @Html.Partial("Partials/_CurrentWeatherPV", cwVM)
+        @*<div class="row table-bordered" style="margin:.1vw">
+
+            <div class="col-md-6">
+
+                <p>@Html.Action("CurrentWeatherPV")</p>
+                <p>@Html.Raw(Model.Temp)</p>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <p>@Html.Raw(@Model.Wind)</p>
+                <p>@Html.Raw(@Model.Precipitation)</p>
+
+            </div>
+
+        </div>*@
+
+    </div>
+    <div class="col-md-6">
+        <h2>5-day forecast</h2>
+        <p>This section will retrive a 5-day weather forecast from the OpenWeatherAPI also given latitude and longitude. </p>
+        <div style="overflow-y: scroll; height:420px;">
+            @Html.Partial("Partials/_FiveDaysWeatherForecastPV", fwVM)
+
+        </div>
+    </div>

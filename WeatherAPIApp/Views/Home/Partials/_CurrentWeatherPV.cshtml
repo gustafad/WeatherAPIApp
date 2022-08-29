@@ -1,0 +1,20 @@
+﻿@model WeatherAPIApp.ViewModels.CurrentWeatherVM
+
+<div class="row table-bordered" style="margin:.1vw">
+
+    <div class="col-md-6">
+
+        <p>@Html.Raw(Model.Weather)</p>
+        <p>@Html.Raw(Model.Temp)</p>
+        <p>@Html.Raw(Model.TimeOfDataForecasted)</p>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <p>@Html.Raw(@Model.Wind)</p>
+        <p>@Html.Raw(@Model.Precipitation)</p>
+
+    </div>
+
+</div>
