@@ -1,0 +1,46 @@
+
+
+This program was developed alongside the "Microsoft.AspNet.Mvc" package and "bootstrap". Thus a few nessesary files have not been created by me or edited by me.
+The files that have been developed from scratch are listed below:
+
+Controllers
+  HomeController.cs
+  
+Models
+  City.cs
+  Clouds.cs
+  Coord.cs
+  CurrentWeatherDTO.cs
+  FiveDaysWeatherForecastDTO.cs
+  List.cs
+  Main.cs
+  Rain.cs
+  Snow.cs
+  Sys.cs
+  Weather.cs
+  Wind.cs
+  
+Services
+  WeatherService.cs
+  
+ViewModels
+  CurrentWeatherVM.cs
+  FiveDaysWeatherForecastVM.cs
+  
+Views
+  Home
+    Partials
+      _CurrentWeatherPV.cshtml
+      _FiveDaysWeatherForecastPV.cshtml
+ 
+
+The files that have NOT been developed from scratch but have been edited for my needs are the following:
+
+Views
+  Home
+    About.cshtml (border-line made from scratch)
+    Index.cshtml (border-line made from scratch)
+
+Views
+  Shared
+    _Layout.cshtml
