@@ -1,6 +1,6 @@
+To launch the application, open the project in VisualStudio 2019 and press run. If any problem arrised, up on request I could publish the application to a web hotel and it could be launched from there.
 
-
-This program was developed alongside the "Microsoft.AspNet.Mvc" package and "bootstrap". Thus a few nessesary files have not been created by me or edited by me.
+This program was developed in "VisualStudio 2019 Community Edition" alongside the "Microsoft.AspNet.Mvc" package and "bootstrap". Thus a few nessesary files have not been created by me or edited by me.
 The files that have been developed from scratch are listed below:
 
 Controllers
