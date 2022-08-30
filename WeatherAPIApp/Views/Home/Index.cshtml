@@ -10,12 +10,11 @@
         <img src="..\..\Content\WeatherIcon.png" class="img-fluid" style="max-height:100px" alt="WeatherIcon - sun with cloud in front of it" />
     </h1>
     <p class="lead">A weather forecast application for the CTK interview case.</p>
-    <!--<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>-->
 
 </div>
 
 <div>
-    <p class="text-center" style="font-size: small">I will use Chalmers location or my own to get weather data. However, finding the location of the user is also possible, though it is not prioritized in this case.</p>
+    <p class="text-center" style="font-size: small">@ViewBag.LocationText</p>
 </div>
 
 <div class="row center-block">
@@ -24,23 +23,7 @@
         <p>This section calls to the OpenWeatherAPI for the current weather data given latitude and longitude.</p>
 
         @Html.Partial("Partials/_CurrentWeatherPV", cwVM)
-        @*<div class="row table-bordered" style="margin:.1vw">
 
-            <div class="col-md-6">
-
-                <p>@Html.Action("CurrentWeatherPV")</p>
-                <p>@Html.Raw(Model.Temp)</p>
-
-            </div>
-
-            <div class="col-md-6">
-
-                <p>@Html.Raw(@Model.Wind)</p>
-                <p>@Html.Raw(@Model.Precipitation)</p>
-
-            </div>
-
-        </div>*@
 
     </div>
     <div class="col-md-6">

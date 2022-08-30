@@ -130,7 +130,6 @@
     <Compile Include="Models\Coord.cs" />
     <Compile Include="Models\CurrentWeatherDTO.cs" />
     <Compile Include="Models\FiveDaysWeatherForecastDTO.cs" />
-    <Compile Include="Models\GetLocation.cs" />
     <Compile Include="Models\List.cs" />
     <Compile Include="Models\Main.cs" />
     <Compile Include="Models\Rain.cs" />
@@ -180,6 +179,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Partials\_CurrentWeatherPV.cshtml" />
     <Content Include="Views\Home\Partials\_FiveDaysWeatherForecastPV.cshtml" />
+    <Content Include="Views\Home\NoData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

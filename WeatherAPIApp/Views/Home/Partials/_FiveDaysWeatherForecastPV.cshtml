@@ -1,52 +1,55 @@
 ﻿@model WeatherAPIApp.ViewModels.FiveDaysWeatherForecastVM
 
-<style>
-    .ForecastTableDark {
-        background-color: lightgray;
-    }
+@*
+Done slightly different than Current weather as we are handling multiple forecasts.
+We loop through the array of forecasts and create divs for each. Also announces if the day has changed
+*@
 
-    .ForecastTableLight {
-        background-color: white;
-    }
-</style>
-
-@{ 
-    bool index = false;
-    int day = 0;
-}
+@{
+    bool isNewDay = false;
+    int Currentday = Model.TimeOfDataForecasted(Model.GetInfoList.First()).AsDateTime().Day;
 
 
-@foreach (var item in Model.GetInfoList) //remember to do same on Currentweather
-{
-
-    //Model.Iterator(i);
-    index = Model.TimeOfDataForecasted(item).AsDateTime().Day == day;
-    if (index)
+    foreach (var item in Model.GetInfoList)
     {
+        isNewDay = !(Model.TimeOfDataForecasted(item).AsDateTime().Day == Currentday);
 
-        <div class="row">
-            @Model.TimeOfDataForecasted(item).AsDateTime().DayOfWeek;
+        Currentday = Model.TimeOfDataForecasted(item).AsDateTime().Day;
+
+        <div class="row table-bordered" style="margin:.1vw">
+
+            <div class="row" style="margin: .1vw; font-size: large">
+                @{
+                    if (item == Model.GetInfoList.First())
+                    {
+                        @Model.TimeOfDataForecasted(item).AsDateTime().DayOfWeek
+                        <text> - </text>
+                    }
+                    if (isNewDay)
+                    {
+                        @Model.TimeOfDataForecasted(item).AsDateTime().DayOfWeek.ToString()
+                        <text> - </text>
+                    }
+
+                    @Html.Raw(Model.TimeOfDataForecasted(item).AsDateTime().TimeOfDay.ToString().Substring(0,5))
+                }
+            </div>
+
+            <div class="col-md-6">
+
+                <p>@Html.Raw(Model.Weather(item))</p>
+               
+            </div>
+
+            <div class="col-md-6">
+
+                <p>@Html.Raw(Model.Temp(item))</p>
+                <p>@Html.Raw(@Model.Wind(item))</p>
+                <p>@Html.Raw(@Model.Precipitation(item))</p>
+
+            </div>
+
         </div>
-    }
-    day = Model.TimeOfDataForecasted(item).AsDateTime().Day;
 
-    <div class="row table-bordered @if (index) { <text>ForecastTableDark</text> } else { <text>ForecastTableLight</text> } " id="ForecastTable" style="margin:.1vw">
-
-        <div class="col-md-6">
-
-            <p>@Html.Raw(Model.Weather(item))</p>
-            <p>@Html.Raw(Model.Temp(item))</p>
-            <p>@Html.Raw(Model.TimeOfDataForecasted(item))</p>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <p>@Html.Raw(@Model.Wind(item))</p>
-            <p>@Html.Raw(@Model.Precipitation(item))</p>
-
-        </div>
-
-    </div>
-    
+        }
 }

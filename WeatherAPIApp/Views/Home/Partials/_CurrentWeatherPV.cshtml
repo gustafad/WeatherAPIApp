@@ -5,13 +5,14 @@
     <div class="col-md-6">
 
         <p>@Html.Raw(Model.Weather)</p>
-        <p>@Html.Raw(Model.Temp)</p>
-        <p>@Html.Raw(Model.TimeOfDataForecasted)</p>
+        
+        <p>@Html.Raw(Model.TimeOfDataMeassured)</p>
 
     </div>
 
     <div class="col-md-6">
 
+        <p>@Html.Raw(Model.Temp)</p>
         <p>@Html.Raw(@Model.Wind)</p>
         <p>@Html.Raw(@Model.Precipitation)</p>
 

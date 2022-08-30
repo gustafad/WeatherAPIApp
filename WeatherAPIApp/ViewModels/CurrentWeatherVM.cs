@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WeatherAPIApp.Models;
 
 namespace WeatherAPIApp.ViewModels
 {
+    // The view model's task is to form a template for all data to be shown so we dont have to repeat it all in the cshtml
     public class CurrentWeatherVM
     {
         private CurrentWeatherDTO _cw;
@@ -14,10 +14,12 @@ namespace WeatherAPIApp.ViewModels
         {
             _cw = model;
         }
+        // Returns the weather icon and the description
         public HtmlString Weather 
         {
             get
             {
+                // The weather object is technically an array of weathers, but it should never be more than one object in the array, but just in case, we throw an exception, cause then something weird is up
                 if (_cw.weather.Length > 1)
                 {
                     throw new Exception("Weather list has more than 1 item");
@@ -27,6 +29,7 @@ namespace WeatherAPIApp.ViewModels
             }
                
         }
+        // Returns the current tempature
         public string Temp
         {
             get
@@ -36,6 +39,7 @@ namespace WeatherAPIApp.ViewModels
             }
 
         }
+        // Returns the wind speed and direction
         public HtmlString Wind
         {
             get
@@ -43,6 +47,7 @@ namespace WeatherAPIApp.ViewModels
                 return new HtmlString("Wind speed: " + (_cw.wind.speed) + " m/s" + "<br />" + " Wind direction: " + (_cw.wind.deg) + " deg");
             }
         }
+        //Returns how much it rains
         public HtmlString Precipitation 
         { get
             {
@@ -52,10 +57,6 @@ namespace WeatherAPIApp.ViewModels
                     {
                         return new HtmlString($"Rain: {_cw.rain._1h} mm last hour <br /> {_cw.rain._3h} mm last 3 hours");
                     }
-                    else
-                    {
-                        return new HtmlString($"Rain: {_cw.rain._1h} mm last hour");
-                    }
                 }
 
                 if (_cw.snow != null)
@@ -63,10 +64,6 @@ namespace WeatherAPIApp.ViewModels
                     if (_cw.snow._3h != 0)
                     {
                         return new HtmlString($"Snow: {_cw.snow._1h} mm last hour <br /> {_cw.snow._3h} mm last 3 hours");
-                    }
-                    else
-                    {
-                        return new HtmlString($"Snow: {_cw.snow._1h} mm last hour");
                     }
                 }
 
@@ -81,7 +78,8 @@ namespace WeatherAPIApp.ViewModels
                 }
             }
         }
-        public string TimeOfDataForecasted
+        // Returns the time the data was messured
+        public string TimeOfDataMeassured
         {
             get
             {
